@@ -43,5 +43,6 @@ public class Proc1 {
         }
         System.out.println("정상적으로 실행되었습니다.");
         System.out.println("실패했어");
+        System.out.println("실패했어2");
     }
 }
