@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>Untitled Document</title>
+
+<script language="javascript">
+// 페이지가 로딩될때 자동 실행되는 함수
+window.onload = function(){
+    DivOff();
+}
+
+function DivOff(){
+    // alert('DivOff Call');
+
+    var _create = document.getElementById("divCreate");
+    _create.style.display = "none";  // 출력 안되게 함
+    var _update = document.getElementById("divUpdate");
+    _update.style.display = "none";  // 출력 안되게 함
+    var _delete = document.getElementById("divDelete");
+    _delete.style.display = "none";  // 출력 안되게 함
+    var _list = document.getElementById("divList");
+    _list.style.display = "";        // 출력 됨
+}
+
+// 주어진 태그를 보이게 함
+function showElement(ele){
+    DivOff();
+    var _ele = document.getElementById(ele);
+    _ele.style.display = "";     
+}
+
+// 수정
+function update(code, name, explain){
+    DivOff();
+    showElement('divUpdate');
+
+    var f = document.frmUpdate;
+    f.txtCode.value = code;
+    f.txtName.value= name;
+    f.txtExplain.value = explain;
+}
+
+// 삭제
+function remove(code){
+    DivOff();
+    showElement('divDelete');
+
+    var f = document.frmDelete;
+    f.txtCode.value = code;
+}
+</script>
+
+
+</head>
+
+<body>
+<fieldset style="width: 750px">
+<legend>공지시항 코드 관리</legend>
+  <input type="button" name="btnList" id="btnList" value="목록" 
+         onclick="showElement('divList')"/>
+  <input type="button" name="btnCreate" id="btnCreate" value="등록" 
+         onclick="showElement('divCreate')"/>
+  <input type="button" name="btnUpdate" id="btnUpdate" value="수정" 
+         onclick="showElement('divUpdate')"/>
+  <input type="button" name="btnDelete" id="btnDelete" value="삭제" 
+         onclick="showElement('divDelete')"/>
+</fieldset>
+<br />
+<br />
+<div name="divCreate" id="divCreate" style="width:840px; display:none">
+<center>
+</center>
+<form name="frmCreate">
+<table width="750" border="0" cellspacing="2" cellpadding="0"
+       style="border-color:#FFFFFF;" >
+  <tr style="background-color:#00FF00">
+    <td colspan="3"><div align="center">코드 등록</div></td>
+    </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    </tr>
+  <tr style="background-color:#00FF00">
+    <td width="155">코드</td>
+    <td width="282"><label>
+      <input name="txtCode" type="text" size="40" />
+    </label></td>
+    <td width="293"><label>
+      <input type="button" name="btnCodeCreate" id="btnCodeCreate" value="코드생성" />
+    </label></td>
+  </tr>
+  <tr style="background-color:#00FF00">
+    <td>공지사항  이름 </td>
+    <td><label>
+      <input name="txtName" type="text" size="40" />
+    </label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr style="background-color:#00FF00">
+    <td>기타 설명 </td>
+    <td><label>
+      <input name="txtExplain" type="text" size="40" />
+    </label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    </tr>
+  <tr style="background-color:#00FF00">
+    <td colspan="3" align="center">
+      <input type="button" name="btnSubmit" value="확인" />
+  <input type="button" name="btnCancel" value="취소" />    </td>
+    </tr>
+</table>
+</form>
+</div>
+
+<div name="divUpdate" id="divUpdate" style="width:840px; display:none">
+<center>
+</center>
+<form name="frmUpdate">
+<table width="750" border="0" cellspacing="2" cellpadding="2" >
+  <tr style="background-color: #FFCC00 ">
+    <td colspan="3"><div align="center">코드 수정</div></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr style="background-color: #FFCC00 ">
+    <td width="156">코드</td>
+    <td width="282"><label>
+      <input name="txtCode" type="text" size="40" />
+    </label></td>
+    <td width="292"><label>
+      <input type="button" name="btnCodeCreate" id="btnCodeCreate" value="코드생성" />
+    </label></td>
+  </tr>
+  <tr style="background-color: #FFCC00 ">
+    <td>공지사항 이름 </td>
+    <td><label>
+      <input name="txtName" type="text" size="40" />
+    </label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr style="background-color: #FFCC00 ">
+    <td>기타 설명 </td>
+    <td><label>
+      <input name="txtExplain" type="text" size="40" />
+    </label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    </tr>
+  <tr style="background-color: #FFCC00 ">
+    <td colspan="3" align="center">
+      <input type="button" name="btnSubmit" value="확인" />
+  <input type="button" name="btnCancel" value="취소" />    </td>
+    </tr>
+</table>
+</form>
+</div>
+
+<div name="divDelete" id="divDelete" style="width:840px; display:none">
+<form name="frmDelete">
+<table width="750" border="0" cellspacing="2" cellpadding="2">
+  <tr style="background-color: #00CCFF ">
+    <td colspan="3"><div align="center">코드 삭제</div></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr style="background-color: #00CCFF ">
+    <td width="161">삭제할 코드</td>
+    <td width="326"><label>
+      <input name="txtCode" type="text" size="40" />
+    </label></td>
+    <td width="243"><label>
+      <input type="button" name="btnCodeCreate2" id="btnCodeCreate2" value="삭제할 코드찾기" />
+    </label></td>
+  </tr>
+  
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    </tr>
+  <tr style="background-color: #00CCFF ">
+    <td colspan="3" align="center">
+      <input type="button" name="btnSubmit" value="확인" />
+  <input type="button" name="btnCancel" value="취소" />    </td>
+    </tr>
+</table>
+</form>
+</div>
+
+<div name="divList" id="divList" style="width:840px">
+<table width="750" border="0" cellpadding="2" cellspacing="2" 
+>
+  <tr style="background-color: #FFFF33; ">
+    <td colspan="5"><div align="center">코드 목록 </div></td>
+    </tr>
+  <tr style="background-color: #FFFF33; ">
+    <td width="55"><div align="center">번호</div></td>
+    <td width="77"><div align="center">코드</div></td>
+    <td width="172"><div align="center">공지사항 이름 </div></td>
+    <td width="313" bordercolor="#FFFFFF"><div align="center">기타 설명 </div></td>
+    <td width="101"><div align="center">기타</div></td>
+  </tr>
+  <tr style="background-color: #FFFF33; ">
+    <td>1</td>
+    <td>A01</td>
+    <td>전산부</td>
+    <td>전산부 전용 공지사항 </td>
+    <td>
+<a href="javascript:update('A01', '전산부','전산부 전용 공지사항')">수정</a>
+/
+<a href="javascript:remove('A01')">삭제</a>
+</td>
+  </tr>
+  <tr style="background-color: #FFFF33; ">
+    <td>2</td>
+    <td>A03</td>
+    <td>영업부</td>
+    <td>영업부 전용 공지사항 </td>
+    <td>
+<a href="javascript:update('A02', '영업부','영업부 전용 공지사항')">수정</a>
+/
+<a href="javascript:remove('A02')">삭제</a>
+</td>
+  </tr>
+  <tr style="background-color: #FFFF33; ">
+    <td>3</td>
+    <td>A05</td>
+    <td>기술부</td>
+    <td>기술부 전용 공지사항 </td>
+    <td>
+<a href="javascript:update('A03', '기술부','기술부 전용 공지사항')">수정</a>
+/
+<a href="javascript:remove('A03')">삭제</a>
+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr style="background-color: #FFFF33; ">
+    <td colspan="5"><div align="center">[이전 10개] 1 2 3 4 5 6 7 8 9 10 [다음 10개] </div></td>
+    </tr>
+</table>
+
+
+</div>
+
+</body>
+</html>
+
